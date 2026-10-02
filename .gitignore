@@ -1,0 +1,28 @@
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# MLflow generated data
+mlruns/
+*.db
+
+# Generated model/data artifacts
+data/processed/*.csv
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  api:
+    platform: linux/arm64
+    build: .
+    container_name: mlopsflow-api
+    ports:
+      - "8001:8000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+
+  mlflow:
+    platform: linux/arm64
+    image: ghcr.io/mlflow/mlflow:v2.18.0
+    container_name: mlopsflow-mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    volumes:
+      - ./mlruns:/mlflow/artifacts
+
+  postgres:
+    platform: linux/amd64
+    image: postgres:15
+    container_name: mlopsflow-postgres
+    environment:
+      POSTGRES_USER: mlops
+      POSTGRES_PASSWORD: mlops
+      POSTGRES_DB: mlopsflow
+    ports:
+      - "5432:5432"
