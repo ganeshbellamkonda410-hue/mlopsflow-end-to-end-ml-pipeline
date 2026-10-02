@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MLOpsFlow | Student Dropout Prediction</title>
+    <link rel="stylesheet" href="/frontend/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="badge">MLOps • Machine Learning • FastAPI</div>
+        <h1>MLOpsFlow</h1>
+        <p>Student Dropout Risk Prediction System</p>
+        <span>End-to-end machine learning inference powered by a deployed ML model.</span>
+    </header>
+
+    <main class="card">
+
+        <h2>Predict Student Risk</h2>
+        <p class="subtitle">
+            Enter the student's academic and engagement information.
+        </p>
+
+        <form id="predictionForm">
+
+            <div class="grid">
+
+                <div class="field">
+                    <label for="attendance">Attendance (%)</label>
+                    <input
+                        type="number"
+                        id="attendance"
+                        min="0"
+                        max="100"
+                        value="82"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="assignments">Assignments Completed</label>
+                    <input
+                        type="number"
+                        id="assignments"
+                        min="0"
+                        max="10"
+                        value="7"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="exam">Exam Score (%)</label>
+                    <input
+                        type="number"
+                        id="exam"
+                        min="0"
+                        max="100"
+                        value="74"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="engagement">Engagement Score (%)</label>
+                    <input
+                        type="number"
+                        id="engagement"
+                        min="0"
+                        max="100"
+                        value="65"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <button type="submit" id="predictButton">
+                Predict Dropout Risk
+            </button>
+
+        </form>
+
+        <div id="loading" class="loading hidden">
+            Running ML prediction...
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="result" class="result hidden">
+
+            <div class="result-label">Prediction Result</div>
+
+            <div id="risk" class="risk">LOW RISK</div>
+
+            <div class="result-grid">
+
+                <div>
+                    <span>Confidence</span>
+                    <strong id="confidence">—</strong>
+                </div>
+
+                <div>
+                    <span>Risk Probability</span>
+                    <strong id="probability">—</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <section class="architecture">
+
+        <h2>ML Pipeline</h2>
+
+        <div class="pipeline">
+
+            <div>Student Data</div>
+            <span>→</span>
+            <div>Validation</div>
+            <span>→</span>
+            <div>Preprocessing</div>
+            <span>→</span>
+            <div>Feature Engineering</div>
+            <span>→</span>
+            <div>ML Model</div>
+            <span>→</span>
+            <div>Prediction</div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <a href="/docs" target="_blank">API Documentation</a>
+        <a href="/health" target="_blank">Health Check</a>
+        <a href="/metrics" target="_blank">Model Metrics</a>
+    </footer>
+
+</div>
+
+<script src="/frontend/app.js"></script>
+
+</body>
+</html>
