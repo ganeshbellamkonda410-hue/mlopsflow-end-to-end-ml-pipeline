@@ -1,0 +1,14 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.git/
+.github/
+mlruns/
+data/processed/
+.pytest_cache/
+.mypy_cache/
+.vscode/
+.idea/
+.env
+*.db
